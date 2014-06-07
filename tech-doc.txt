@@ -1,0 +1,66 @@
+Last update: Sat, 07 Jun 2014 23:32:53 +0200
+
+Views:
+
+         login.js
+            |
+         index.js
+            |
+        ----+----
+        |       |
+    vote.js   voted.js
+        |
+        v
+    mark as
+    voted
+
+
+Technical stuff:
+    * Backbone
+    * Phonegap
+    * GoRatchet (styles)
+
+Init js:
+    * static/js/init.js
+
+    This script creates the basic html divs and includes js. To add a view
+    you should add a new Init.divs entry and all needed Init.js.
+    The Init.divs entry should be the field "el".
+
+Backbone routes:
+    * static/js/router.js
+
+    To add a new view to the app you should add it to the router.
+    The route entry should be the field "route" if the view extends
+    Acensus.View
+
+Templates:
+    * static/js/templates/all.js
+
+    Script generated using /templates/underscore/*.html
+    This script is generated using compile_templates.sh. Before run
+    compile_templates.js you should ejectue "npm install ." in the www
+    directory to install grunt dependencies.
+
+    After changes in underscore templates you should run
+    compile_templates.sh.
+
+API:
+    * static/js/api.js
+
+    Calls to the api should go in this file. Currently all calls are fake
+    calls.
+
+Android:
+    To run this app in android you should run:
+    $ phonegap run android
+
+    To use the real icon, you should ejecute:
+    $ python genicons.py
+    After one first run. Then all run will work with the correct icon.
+
+Development:
+    To development without android you can use the django server:
+    $ cd acensus/
+    $ python manage.py runserver
+    $ firefox http://localhost:8000/

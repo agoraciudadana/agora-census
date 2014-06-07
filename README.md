@@ -19,3 +19,4 @@ Execute script compile\_templates.sh inside folder interface:
     $ npm install package.json # one time
     $ ./compile_templates.sh # when you change some template
 
+To Contribute read tech-doc.txt
