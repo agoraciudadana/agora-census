@@ -10,6 +10,12 @@
 
         search: function() {
             var dni = $("#dni").val();
+            dni = dni.replace(/-/g, "").replace(/ /g, "");
+            //if (!Acensus.validateDNI(dni)) {
+            //    Acensus.error("DNI no válido");
+            //    return false;
+            //}
+
             $(".loading").show();
             Acensus.api.search(dni,
                 //success
@@ -27,6 +33,5 @@
                     Acensus.error("Error searching dni: " + data.message);
                 });
         },
-
     });
 }).call(this);

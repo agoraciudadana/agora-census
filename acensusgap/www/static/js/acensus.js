@@ -152,4 +152,22 @@
 
         Acensus.router.navigate("index", {trigger: true});
     }
+
+    Acensus.validateDNI = function (dni) {
+        if (dni.length != 9) {
+            return false;
+        }
+
+        function DNIChar(dni) {
+            var lockup = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            var ndni = parseInt(dni.substring(0, 8), 10);
+            return lockup.charAt(ndni % 23);
+        }
+
+        if (DNIChar(dni) !== dni.charAt(8).toUpperCase()) {
+            return false;
+        }
+
+        return true;
+    }
 }).call(this);
