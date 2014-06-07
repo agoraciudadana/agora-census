@@ -11,7 +11,8 @@
         search: function() {
             var dni = $("#dni").val();
             // TODO do the search in the api and lock this DNI
-            Acensus.router.navigate("voted/" + dni, {trigger: true});
+            //Acensus.router.navigate("voted/" + dni, {trigger: true});
+            Acensus.router.navigate("vote/" + dni, {trigger: true});
         },
 
     });

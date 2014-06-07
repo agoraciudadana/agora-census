@@ -4,6 +4,7 @@
         "login-view",
         "index-view",
         "voted-view",
+        "vote-view",
     ];
 
     Init.js = [
@@ -15,6 +16,7 @@
         "views/login.js",
         "views/index.js",
         "views/voted.js",
+        "views/vote.js",
     ];
 
     Init.addDivs = function() {

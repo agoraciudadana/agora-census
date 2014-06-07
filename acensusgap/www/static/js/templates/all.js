@@ -8,4 +8,6 @@ this["JST"]["templates/underscore/menu.html"] = function(obj) {obj || (obj = {})
 
 this["JST"]["templates/underscore/signup.html"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '';}return __p};
 
-this["JST"]["templates/underscore/voted.html"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<div class="content-padded">\n    <h2>El DNI ' +__e( dni ) +' ya ha votado</h2>\n    <a href="#index" id="volver" class="btn btn-negative btn-block">Volver</a>\n</div>\n';}return __p};
+this["JST"]["templates/underscore/vote.html"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<div class="content-padded">\n    <h2>El DNI ' +__e( dni ) +' no ha votado</h2>\n    <div class="card dni">\n        <h1>' +__e( dni ) +'</h1>\n    </div>\n    <a href="#" id="vote" class="btn btn-primary btn-block">VOTÓ</a>\n    <a href="#index" id="back" class="btn btn-negative btn-block">Volver</a>\n</div>\n';}return __p};
+
+this["JST"]["templates/underscore/voted.html"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<div class="content-padded">\n    <h2>El DNI ' +__e( dni ) +' ya ha votado</h2>\n    <div class="card dni">\n        <h1>' +__e( dni ) +'</h1>\n    </div>\n    <a href="#index" id="volver" class="btn btn-negative btn-block">Volver</a>\n</div>\n';}return __p};
