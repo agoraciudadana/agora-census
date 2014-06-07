@@ -1,0 +1,30 @@
+<ul class="bar bar-footer" role="navigation">
+    <div class="pull-left">
+        <% if (!login) { %>
+        <a href="#profile" id="profile">
+            <img src="static/img/icon_user.png" alt="user" />
+            <span class="icon icon-person"><%- name %></span>
+        </a>
+        <% } else { %>
+            <a href="#login" id="login">
+                <div class="icon icon-person"></div>
+                <span class="menu-text">Login</span>
+            </a>
+        <% } %>
+    </div>
+
+    <div class="pull-right">
+        <% if (login) { %>
+            <span class="menu-text smalltext">VPBank</span>
+        <% } else { %>
+            <a href="#balance" class="balance menu-text" id="balance">
+                <%- balance %>
+            </a>
+        <% } %>
+        <img src="static/img/vp_icon.png" alt="Vpbank" class="vpicon-coin" />
+    </div>
+
+    <h1 class="title">
+        <img src="static/img/icon_bars.png" alt="show menu" />
+    </h1>
+</ul>

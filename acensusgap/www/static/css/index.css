@@ -1,0 +1,34 @@
+/* menu.html */
+
+.bar-footer {
+    background-color: #2E3436;
+}
+
+.bar-footer .balance, #profile {
+    color: white;
+    font-size: 20pt;
+}
+
+.bar-footer img {
+    margin-top: 2pt;
+}
+
+.bar-footer img {
+    margin-top: 2pt;
+}
+
+.bar-footer img.vpicon-coin {
+    margin-top: 5pt;
+}
+
+.bar-footer .menu-text {
+    color: white;
+    font-size: white;
+    vertical-align: top;
+    margin-top: 7pt;
+    display: inline-block;
+}
+
+.bar-footer .icon {
+    color: white;
+}

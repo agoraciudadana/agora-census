@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <title>Agora Census</title>
+
+    <!-- ratchet -->
+    <link href="{{ STATIC_URL }}ratchet/css/ratchet.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
+    <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ STATIC_URL }}ratchet/js/ratchet.min.js"></script>
+
+    <!-- templates -->
+    <script type="text/javascript" src="{{ STATIC_URL }}/js/templates/all.js"></script>
+
+
+    <!--script type="text/javascript">
+        Acensus.basepath = '';
+        Acensus.main();
+    </script-->
+
+  </head>
+
+  <body>
+    <div id="menu-view"></div>
+    <div class="app content">
+        <div class="container-fluid" id="divcontainer">
+        </div>
+
+        <div class="loading">Loading&#8230;</div>
+        <div id="errormsg"></div>
+    </div>
+
+    <script src="{{ STATIC_URL }}js/init.js"></script>
+    <script type="text/javascript">
+        Init.init(function() {
+            Acensus.basepath = '';
+            Acensus.main();
+        });
+    </script>
+
+  </body>
+</html>
