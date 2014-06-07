@@ -1,4 +1,4 @@
-# VPbank
+# Agora census
 
 
 ## Organization of the source code
@@ -7,7 +7,7 @@
 
 Create a virtualenv:
 
-    $ mkvirtualenv vpbank -p $(which python2)
+    $ mkvirtualenv acensus -p $(which python2)
 
 Install dependencies:
 
