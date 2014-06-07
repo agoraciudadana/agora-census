@@ -15,13 +15,13 @@
 
     // main method
     User.main = function() {
-        Vpbank.login.remove();
+        Acensus.login.remove();
         User.user = new User.Model();
 
-        Vpbank.menu = new Vpbank.MenuView();
-        Vpbank.menu.render();
+        Acensus.menu = new Acensus.MenuView();
+        Acensus.menu.render();
 
-        Vpbank.router = new User.Router();
+        Acensus.router = new User.Router();
         if (Backbone.History.started) {
             Backbone.history.stop()
         }

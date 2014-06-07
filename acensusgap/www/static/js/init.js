@@ -9,7 +9,7 @@
     Init.js = [
         // base
         "user.js",
-        "vpbank.js",
+        "acensus.js",
 
         // views
         "views/login.js",
