@@ -2,14 +2,19 @@
     var Init = this.Init = {};
     Init.divs = [
         "login-view",
+        "index-view",
+        "voted-view",
     ];
 
     Init.js = [
         // base
         "acensus.js",
+        "router.js",
 
         // views
         "views/login.js",
+        "views/index.js",
+        "views/voted.js",
     ];
 
     Init.addDivs = function() {

@@ -35,7 +35,11 @@
         },
 
         login: function() {
-            alert("LOGIN");
+            var u = $("#username").val();
+            var p = $("#password").val();
+            alert("LOGIN: " + u);
+            // TODO do the real login
+            Acensus.onlogin();
         },
     });
 }).call(this);

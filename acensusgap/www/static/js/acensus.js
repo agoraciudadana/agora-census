@@ -33,8 +33,6 @@
 
     // generic view
     Acensus.View = Backbone.View.extend({
-        buttons: [],
-
         initialize: function() {
             this.init();
         },
@@ -62,11 +60,6 @@
         },
 
         render: function(){
-            Acensus.menu.clearButtons();
-            _.each(this.buttons, function(b) {
-                Acensus.menu.addButton(b.text, b.icon, b.id, b.route);
-            });
-
             this.$el.html(this.template({}));
         },
     });
@@ -143,5 +136,17 @@
         }
         Backbone.history.start();
         Acensus.router.navigate("login", {trigger: true});
+    }
+
+    Acensus.onlogin = function() {
+        Acensus.router = new Acensus.AppRouter();
+        if (Backbone.History.started) {
+            Backbone.history.stop();
+        }
+        Backbone.history.start();
+        Acensus.login.deltree();
+        Acensus.login.remove();
+
+        Acensus.router.navigate("index", {trigger: true});
     }
 }).call(this);
