@@ -150,6 +150,8 @@
         Acensus.login.deltree();
         Acensus.login.remove();
 
+        $("#menu").append('<a class="icon icon-close pull-right" href="#logout"></a>');
+
         Acensus.router.navigate("index", {trigger: true});
     }
 

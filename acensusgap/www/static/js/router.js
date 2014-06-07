@@ -1,9 +1,14 @@
 (function() {
     Acensus.AppRouter = Backbone.Router.extend({
         routes: {
+            'logout' : 'logout',
             'index' : 'index',
             'voted/:dni' : 'voted',
             'vote/:dni' : 'vote',
+        },
+
+        logout: function() {
+            Acensus.logout();
         },
 
         index: function() {
