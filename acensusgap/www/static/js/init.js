@@ -1,22 +1,15 @@
 (function() {
     var Init = this.Init = {};
     Init.divs = [
-        "welcome-view",
-        "home-view",
         "login-view",
     ];
 
     Init.js = [
         // base
-        "user.js",
         "acensus.js",
 
         // views
         "views/login.js",
-        "views/menu.js",
-
-        // models
-        "models/user.js"
     ];
 
     Init.addDivs = function() {

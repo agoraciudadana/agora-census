@@ -1,55 +1,47 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8"/>
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-
+    <meta charset="utf-8">
     <title>Agora Census</title>
 
-    <!-- ratchet -->
-    <link href="{{ STATIC_URL }}ratchet/css/ratchet.min.css" rel="stylesheet">
-    <link href="{{ STATIC_URL }}css/index.css" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="{{ STATIC_URL }}js/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}js/underscore-min.js"></script>
-    <script src="{{ STATIC_URL }}js/backbone-min.js"></script>
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{ STATIC_URL }}ratchet/js/ratchet.min.js"></script>
+    <link href="static/css/acensus.css" rel="stylesheet">
 
-    <!-- templates -->
-    <script type="text/javascript" src="{{ STATIC_URL }}/js/templates/all.js"></script>
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="static/ratchet/css/ratchet.min.css" rel="stylesheet">
 
-
-    <!--script type="text/javascript">
-        Acensus.basepath = '';
-        Acensus.main();
-    </script-->
-
+    <!-- Include the compiled Ratchet JS -->
+    <script src="static/ratchet/js/ratchet.min.js"></script>
   </head>
-
   <body>
-    <div id="menu-view"></div>
-    <div class="app content">
-        <div class="container-fluid" id="divcontainer">
-        </div>
 
-        <div class="loading">Loading&#8230;</div>
-        <div id="errormsg"></div>
+    <div class="app">
+        <!-- Make sure all your bars are the first things in your <body> -->
+        <header class="bar bar-nav">
+          <h1 class="title">Agora Census</h1>
+        </header>
+
+        <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
+        <div class="content">
+          <div id="divcontainer">
+          </div>
+        </div>
     </div>
 
-    <script src="{{ STATIC_URL }}js/init.js"></script>
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="static/js/underscore-min.js"></script>
+    <script type="text/javascript" src="static/js/backbone-min.js"></script>
+    <script type="text/javascript" src="static/js/templates/all.js"></script>
+    <script type="text/javascript" src="static/js/init.js"></script>
     <script type="text/javascript">
         Init.init(function() {
-            Acensus.basepath = '';
             Acensus.main();
         });
     </script>
-
   </body>
 </html>

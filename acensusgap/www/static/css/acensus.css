@@ -1,0 +1,9 @@
+.welcome {
+    text-align: center;
+}
+
+.welcome img {
+    width: 40%;
+    height: auto;
+    margin-bottom: 20px;
+}

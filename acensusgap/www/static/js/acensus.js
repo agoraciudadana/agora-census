@@ -1,13 +1,6 @@
 (function() {
     var Acensus = this.Acensus = {};
-    Acensus.isOfficer = false;
-    Acensus.isCamera = false;
-
-    Acensus.sounds = null;
     Acensus.userdata = null;
-    Acensus.mobileSounds = false;
-    Acensus.alerts = 0;
-    Acensus.alertTimeout = null;
     Acensus.basepath = 'http://dario.gnun.net:4701/';
 
     Acensus.api = function(path, method, data, onsuccess, onerror) {
@@ -123,11 +116,12 @@
             return;
         }
 
-        Acensus.userdata = window.localStorage.getItem("userdata");
+        //Acensus.userdata = window.localStorage.getItem("userdata");
 
-        Acensus.login = new Acensus.LoginView();
-        Acensus.onlogin();
-        User.main();
+        //Acensus.login = new Acensus.LoginView();
+        //Acensus.onlogin();
+        //User.main();
+        Acensus.showLogin();
     };
 
     // main method
@@ -143,10 +137,6 @@
     }
 
     Acensus.showLogin = function() {
-        Acensus.menu = new Acensus.MenuView();
-        Acensus.menu.login = true;
-        Acensus.menu.render();
-
         Acensus.router = new Acensus.LoginRouter();
         if (Backbone.History.started) {
             Backbone.history.stop();
@@ -154,6 +144,4 @@
         Backbone.history.start();
         Acensus.router.navigate("login", {trigger: true});
     }
-
-    Acensus.phonegap = false;
 }).call(this);
