@@ -37,9 +37,20 @@
         login: function() {
             var u = $("#username").val();
             var p = $("#password").val();
-            alert("LOGIN: " + u);
-            // TODO do the real login
-            Acensus.onlogin();
+            $(".loading").show();
+            Acensus.api.login(u, p,
+                // success
+                function() {
+                    $(".loading").hide();
+                    alert("LOGIN: " + u);
+                    Acensus.onlogin();
+                },
+                // error
+                function(data) {
+                    $(".loading").hide();
+                    Acensus.error(data.message);
+                }
+            );
         },
     });
 }).call(this);

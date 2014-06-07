@@ -3,6 +3,10 @@
     Acensus.userdata = null;
     Acensus.basepath = 'http://dario.gnun.net:4701/';
 
+    Acensus.error = function(msg) {
+        alert(msg);
+    };
+
     Acensus.api = function(path, method, data, onsuccess, onerror) {
         var fullpath = Acensus.basepath + path;
         var req = $.ajax({url:fullpath,
@@ -109,12 +113,11 @@
             return;
         }
 
-        //Acensus.userdata = window.localStorage.getItem("userdata");
+        Acensus.userdata = window.localStorage.getItem("userdata");
 
-        //Acensus.login = new Acensus.LoginView();
-        //Acensus.onlogin();
-        //User.main();
+        Acensus.login = new Acensus.LoginView();
         Acensus.showLogin();
+        Acensus.onlogin();
     };
 
     // main method

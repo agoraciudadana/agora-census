@@ -10,9 +10,22 @@
 
         search: function() {
             var dni = $("#dni").val();
-            // TODO do the search in the api and lock this DNI
-            //Acensus.router.navigate("voted/" + dni, {trigger: true});
-            Acensus.router.navigate("vote/" + dni, {trigger: true});
+            $(".loading").show();
+            Acensus.api.search(dni,
+                //success
+                function (data) {
+                    $(".loading").hide();
+                    if (data.voted) {
+                        Acensus.router.navigate("voted/" + dni, {trigger: true});
+                    } else {
+                        Acensus.router.navigate("vote/" + dni, {trigger: true});
+                    }
+                },
+                // error
+                function (data) {
+                    $(".loading").hide();
+                    Acensus.error("Error searching dni: " + data.message);
+                });
         },
 
     });

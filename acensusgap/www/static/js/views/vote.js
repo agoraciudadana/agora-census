@@ -21,8 +21,19 @@
         },
 
         vote: function () {
-            //TODO do the real query
-            alert("el dni " + this.dni + " se acaba de marcar como votado");
+            $(".loading").show();
+            Acensus.api.vote(this.dni,
+                //success
+                function (data) {
+                    $(".loading").hide();
+                    alert("el dni " + this.dni + " se acaba de marcar como votado");
+                    $("#vote").hide();
+                },
+                // error
+                function (data) {
+                    $(".loading").hide();
+                    Acensus.error("Error: " + data.message);
+                });
             return false;
         },
     });

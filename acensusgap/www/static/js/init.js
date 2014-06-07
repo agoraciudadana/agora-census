@@ -11,6 +11,7 @@
         // base
         "acensus.js",
         "router.js",
+        "api.js",
 
         // views
         "views/login.js",
