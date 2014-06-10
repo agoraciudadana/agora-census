@@ -23,12 +23,13 @@
         vote: function () {
             $(".loading").show();
             var self = this;
-            Acensus.api.vote(this.idnum,
+            Acensus.api.vote(this.idnum, $("#extra").val(),
                 //success
                 function (data) {
                     $(".loading").hide();
-                    alert("The ID " + self.idnum + " has been set as VOTED successfully");
+                    $(".extra").hide();
                     $("#vote").hide();
+                    alert("The ID " + self.idnum + " has been set as VOTED successfully");
                 },
                 // error
                 function (data) {
@@ -39,4 +40,3 @@
         },
     });
 }).call(this);
-

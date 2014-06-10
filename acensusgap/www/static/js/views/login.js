@@ -41,6 +41,15 @@
                 // success
                 function() {
                     $(".loading").hide();
+
+                    // save password, even persistently if possible
+                    Acensus.userdata = {};
+                    Acensus.userdata.password = p;
+                    if (Acensus.supportsLocalStorage()) {
+                        window.localStorage.setItem("userdata",
+                            JSON.stringify(Acensus.userdata));
+                    }
+
                     Acensus.onlogin();
                 },
                 // error

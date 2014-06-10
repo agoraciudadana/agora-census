@@ -88,11 +88,17 @@
             return;
         }
 
-        Acensus.userdata = window.localStorage.getItem("userdata");
+        try {
+            Acensus.userdata = JSON.parse(window.localStorage.getItem("userdata"));
+        } catch (e) {
+        }
 
         Acensus.login = new Acensus.LoginView();
-        Acensus.showLogin();
-        Acensus.onlogin();
+        if (Acensus.userdata && Acensus.userdata.password != undefined) {
+            Acensus.onlogin();
+        } else {
+            Acensus.showLogin();
+        }
     };
 
     // main method

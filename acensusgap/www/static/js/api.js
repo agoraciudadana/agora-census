@@ -1,15 +1,20 @@
 (function() {
     // mock
-    Acensus.base_minshu_url = "http://dario.gnun.net:4701";
+    Acensus.base_minshu_url = "https://dario.im/minshu";
+
+    Acensus.api.getHeaders = function () {
+        return {'Authorization': "Basic " + btoa(Acensus.userdata.password + ":")};
+    };
+
     Acensus.api.login = function (password, onsuccess, onerror) {
         Acensus.userdata = {password: password};
         window.localStorage.setItem("userdata", Acensus.userdata);
         $.ajax({
             url: Acensus.base_minshu_url + "/api/v1/voter/an_invalid_voter",
-            headers:{'Authorization': Acensus.userdata.password},
-            cache: false,
+            headers: Acensus.api.getHeaders(),
+            crossDomain: true,
             timeout: 10000,
-            crossDomain: true
+            type: 'GET'
         }).fail(function(jqXHR, textStatus, errorThrown) {
             // 404 means the Authorization worked
             if (jqXHR.status == 404) {
@@ -22,13 +27,13 @@
         });
     };
 
-    Acensus.api.search = function (id, onsuccess, onerror) {
+    Acensus.api.search = function (idnum, onsuccess, onerror) {
         $.ajax({
-            url: Acensus.base_minshu_url + "/api/v1/voter/" + CryptoJS.SHA512(id),
-            headers: {'Authorization': Acensus.userdata.password},
+            url: Acensus.base_minshu_url + "/api/v1/voter/" + CryptoJS.SHA512(idnum).toString(),
+            headers: Acensus.api.getHeaders(),
             cache: false,
-            timeout: 10000,
-            crossDomain: true
+            crossDomain: true,
+            type: 'GET'
         }).fail(function(jqXHR, textStatus, errorThrown) {
             // 404 means the Authorization worked
             if (jqXHR.status == 404) {
@@ -44,18 +49,21 @@
     /**
      * TODO: receive also extra data
      */
-    Acensus.api.vote = function (dni, onsuccess, onerror) {
+    Acensus.api.vote = function (idnum, extra, onsuccess, onerror) {
         $.ajax({
             url: Acensus.base_minshu_url + "/api/v1/voter",
-            headers: {'Authorization': Acensus.userdata.password},
-            data: {value: CryptoJS.SHA512(id), extra: ''},
+            headers: Acensus.api.getHeaders(),
+            data: JSON.stringify({value: CryptoJS.SHA512(idnum).toString(), extra: extra}),
             contentType : 'application/json',
             cache: false,
-            timeout: 10000,
             crossDomain: true,
             type: 'POST'
         }).fail(function(jqXHR, textStatus, errorThrown) {
-            onerror({message: "internal error"});
+            if (jqXHR.status == 200) {
+                onsuccess();
+            } else {
+                onerror({message: "internal error"});
+            }
         }).done(function(data) {
             onsuccess();
         });
