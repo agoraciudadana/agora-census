@@ -3,8 +3,8 @@
         routes: {
             'logout' : 'logout',
             'index' : 'index',
-            'voted/:dni' : 'voted',
-            'vote/:dni' : 'vote',
+            'voted/:idnum' : 'voted',
+            'vote/:idnum' : 'vote',
         },
 
         logout: function() {
@@ -15,12 +15,12 @@
             Acensus.index = new Acensus.IndexView();
         },
 
-        voted: function(dni) {
-            Acensus.voted = new Acensus.VotedView({dni: dni});
+        voted: function(idnum) {
+            Acensus.voted = new Acensus.VotedView({idnum: idnum});
         },
 
-        vote: function(dni) {
-            Acensus.vote = new Acensus.VoteView({dni: dni});
+        vote: function(idnum) {
+            Acensus.vote = new Acensus.VoteView({idnum: idnum});
         },
     });
 }).call(this);

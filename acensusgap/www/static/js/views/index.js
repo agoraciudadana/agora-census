@@ -9,28 +9,25 @@
         },
 
         search: function() {
-            var dni = $("#dni").val();
-            dni = dni.replace(/-/g, "").replace(/ /g, "");
-            //if (!Acensus.validateDNI(dni)) {
-            //    Acensus.error("DNI no válido");
-            //    return false;
-            //}
+            var idnum = $("#idnum").val().toUpperCase();
+            idnum = idnum.replace(/-/g, "").replace(/ /g, "");
 
             $(".loading").show();
-            Acensus.api.search(dni,
+            Acensus.api.search(idnum,
                 //success
                 function (data) {
                     $(".loading").hide();
+                    Acensus.view_data = data;
                     if (data.voted) {
-                        Acensus.router.navigate("voted/" + dni, {trigger: true});
+                        Acensus.router.navigate("voted/" + idnum, {trigger: true});
                     } else {
-                        Acensus.router.navigate("vote/" + dni, {trigger: true});
+                        Acensus.router.navigate("vote/" + idnum, {trigger: true});
                     }
                 },
                 // error
                 function (data) {
                     $(".loading").hide();
-                    Acensus.error("Error searching dni: " + data.message);
+                    Acensus.error("Error searching idnum: " + data.message);
                 });
         },
     });

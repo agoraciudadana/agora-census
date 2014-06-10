@@ -35,14 +35,12 @@
         },
 
         login: function() {
-            var u = $("#username").val();
             var p = $("#password").val();
             $(".loading").show();
-            Acensus.api.login(u, p,
+            Acensus.api.login(p,
                 // success
                 function() {
                     $(".loading").hide();
-                    alert("LOGIN: " + u);
                     Acensus.onlogin();
                 },
                 // error

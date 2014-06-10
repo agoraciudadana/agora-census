@@ -3,11 +3,11 @@
         route: 'vote',
         el: $('#vote-view'),
         template: JST['templates/underscore/vote.html'],
-        dni: "XXXX",
+        idnum: "XXXX",
 
         initialize: function(options) {
-            if (options && options.dni) {
-                this.dni = options.dni;
+            if (options && options.idnum) {
+                this.idnum = options.idnum;
             }
             this.init();
         },
@@ -17,16 +17,17 @@
         },
 
         render: function() {
-            this.$el.html(this.template({dni: this.dni}));
+            this.$el.html(this.template({idnum: this.idnum}));
         },
 
         vote: function () {
             $(".loading").show();
-            Acensus.api.vote(this.dni,
+            var self = this;
+            Acensus.api.vote(this.idnum,
                 //success
                 function (data) {
                     $(".loading").hide();
-                    alert("el dni " + this.dni + " se acaba de marcar como votado");
+                    alert("The ID " + self.idnum + " has been set as VOTED successfully");
                     $("#vote").hide();
                 },
                 // error

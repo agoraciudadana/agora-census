@@ -1,39 +1,14 @@
 (function() {
     var Acensus = this.Acensus = {};
     Acensus.userdata = null;
+    Acensus.view_data = null;
     Acensus.basepath = 'http://dario.gnun.net:4701/';
 
     Acensus.error = function(msg) {
         alert(msg);
     };
 
-    Acensus.api = function(path, method, data, onsuccess, onerror) {
-        var fullpath = Acensus.basepath + path;
-        var req = $.ajax({url:fullpath,
-                          data: data,
-                          cache: false,
-                          timeout: 10000,
-                          type:method,
-//                           headers: {Auth: Acensus.apikey},
-                          crossDomain: true});
-
-        // DONE
-        req.done(function(data) {
-            onsuccess(data);
-        });
-
-        // ERROR
-        req.fail(function(data, textStatus, error) {
-            // no connection
-            if (data.status == 0 || textStatus == "timeout") {
-                Acensus.error("Conectivity problem...");
-                return;
-            }
-
-            onerror(data);
-        });
-    };
-
+    Acensus.api = {};
 
     // generic view
     Acensus.View = Backbone.View.extend({
@@ -153,23 +128,5 @@
         $("#menu").append('<a class="icon icon-close pull-right" href="#logout"></a>');
 
         Acensus.router.navigate("index", {trigger: true});
-    }
-
-    Acensus.validateDNI = function (dni) {
-        if (dni.length != 9) {
-            return false;
-        }
-
-        function DNIChar(dni) {
-            var lockup = 'TRWAGMYFPDXBNJZSQVHLCKE';
-            var ndni = parseInt(dni.substring(0, 8), 10);
-            return lockup.charAt(ndni % 23);
-        }
-
-        if (DNIChar(dni) !== dni.charAt(8).toUpperCase()) {
-            return false;
-        }
-
-        return true;
     }
 }).call(this);
